@@ -6,21 +6,35 @@
     <title>Sikanoppapeli</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="dice/six.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div id="start_menu">
-        <p>start menu</p>
+        <h2>Sikanoppapeli</h2>
 
-        <div class="dice_quantity"> <!--tähän tulee img, jotka toimii nappina-->
-            <button id="one_dice">one dice</button>
-            <button id="two_dices">two dices</button>
+        <!--napit, mutta nappina kuva-->
+        <div class="dice_quantity">
+            <button id="one_dice">
+                <img src="dice/One_dice.png" alt="yksi noppa" width="100" height="100">
+            </button>
+
+            <button id="two_dices">
+                <img src="dice/Two_dices.png" alt="kaksi noppaa" width="100" height="100">
+            </button>
         </div>
 
-        <input type="number" id="win_points" name="win_points" min="50" max="10000" step="10" value="100">
-        <input type="number" id="player_quantity" name="player_quantity" min="2" max="10" step="1" value="2">
+        <div class="row">
+            <p>Voitto pisteet:</p>
+            <input type="number" id="win_points" name="win_points" min="50" max="10000" step="10" value="100" onkeydown="return false;">
+        </div>
 
-        <button id="start_button">Start</button>
+        <div class="row">
+            <p>Pelaajien määrä:</p>
+            <input type="number" id="player_quantity" name="player_quantity" min="2" max="10" step="1" value="2" onkeydown="return false;">
+        </div>
+
+        <button id="start_button">Pelaa</button>
     </div>
 
     <div id="game_window">
