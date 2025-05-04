@@ -1,8 +1,8 @@
 html, body{
     font-family: "Atma", system-ui;
     text-align: center;
-    padding: 40px;
-    background-color: #dfdfdf;
+    padding: 15px;
+    background-color: #858585;
     color: black;
 }
 
@@ -21,6 +21,8 @@ button, input {
     background-color: #F1BAA1;
     padding: 50px;
     width: 500px;
+    border-radius: 30px;
+    margin: 0 auto;
 
     display: flex;
     flex-direction: column;
@@ -44,8 +46,134 @@ button, input {
     border: none;
     padding: 0;
     margin: 0;
-    cursor: pointer;   
-    outline: none;
+    cursor: pointer;
 }
 
+#start_button {
+    background-color: #BD613C;
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    font-size: 30px;
+}
+
+#start_menu input {
+    width: 60px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+#start_menu p {
+    font-size: 20px;
+}
+
+
+#game_window {
+    background-color: #BD613C;
+    border-radius: 25px;
+    position: relative;
+    width: 1200px;
+    height: 700px;
+    margin: 0 auto;
+}
+
+.inside {
+    background-color: #F1BAA1;
+    border-radius: 25px;
+    margin: 20px;
+    margin-top: 0px;
+    height: 500px;
+    position: relative;
+}
+
+.inside button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+button:hover {
+    filter: brightness(85%);
+}
+
+#stop-btn {
+    background-color: #AA1803;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    font-size: 30px;
+    border-radius: 15px;
+}
+
+#throw_btn {
+    background-color: #6D8C00;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    font-size: 30px;
+    border-radius: 15px;
+}
+
+.person {
+    background-color:#BD613C;
+    width: 200px;
+    height: 150px;
+    border-radius: 25px;
+    
+    position:absolute;
+    top:20px;
+    left: 20px;
+}
+
+.dices {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.game_buttons {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+#player_name_input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    background-color:#F1BAA1;
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 25px;
+}
+
+#player_name_input input{
+    width: 200px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+#player_name_input button{
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 15px;
+    background-color: #BD613C;
+    border: none;
+    border-radius: 15px;
+    font-size: 30px;
+}
+
+#player_name_input p {
+    font-size: 25px;
+    margin: 10px;
+    padding-top: 20px;
+}
 

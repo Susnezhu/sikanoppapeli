@@ -10,35 +10,76 @@
 </head>
 <body>
 
+    <!--Alkuikkuna, jossa valitaan pelin asetukset-->
     <div id="start_menu">
         <h2>Sikanoppapeli</h2>
 
         <!--napit, mutta nappina kuva-->
         <div class="dice_quantity">
             <button id="one_dice">
-                <img src="dice/One_dice.png" alt="yksi noppa" width="100" height="100">
+                <img src="dice/One_dice.png" alt="yksi noppa" width="100" height="100" title="Pelaa yhdellä nopalla">
             </button>
 
             <button id="two_dices">
-                <img src="dice/Two_dices.png" alt="kaksi noppaa" width="100" height="100">
+                <img src="dice/Two_dices.png" alt="kaksi noppaa" width="100" height="100" title="Pelaa kahdella nopalla">
             </button>
         </div>
 
         <div class="row">
             <p>Voitto pisteet:</p>
-            <input type="number" id="win_points" name="win_points" min="50" max="10000" step="10" value="100" onkeydown="return false;">
+            <input type="number" id="win_points" min="50" max="10000" step="10" value="100" onkeydown="return false;">
         </div>
 
         <div class="row">
             <p>Pelaajien määrä:</p>
-            <input type="number" id="player_quantity" name="player_quantity" min="2" max="10" step="1" value="2" onkeydown="return false;">
+            <input type="number" id="player_quantity" min="2" max="10" step="1" value="2" onkeydown="return false;">
         </div>
 
-        <button id="start_button">Pelaa</button>
+        <button id="start_button" title="Aloita peli">Pelaa</button>
     </div>
 
+
+    <!--Ikkuna, jossa voi lisätä pelaajia-->
+    <div id="player_name_input">
+        <p id="player_number">Pelaaja 1:</p>
+        <input type="text" id="player_name">
+        <button id="add_player">Lisää</button>
+    </div>
+
+
+    <!--peli ikkuna, jossa peli tapahtuu-->
     <div id="game_window">
-        <p>game window</p>
+        <h2>Sikanoppapeli</h2>
+
+        <div class="inside">
+            <div class="person">
+                <h2>Name</h2>
+                <p>score: 0</p>
+                <p>total: 0</p>
+            </div>
+
+            <div class="game_buttons">
+                <button>
+                    <img src="dice/restart.png" alt="aloita alusta" width="50" height="50" title="Aloita peli alusta">
+                </button>
+                <button>
+                    <img src="dice/volume.png" alt="aani" width="50" height="50" title="aloittaa tai lopettaa muusiikin soiton">
+                </button>
+                <button>
+                    <img src="dice/instructions.png" alt="pelisaannot" width="50" height="50" title="Avaa pelisäännöt">
+                </button>
+            </div>
+
+            <img id="dice_animation" src="/dice/dice_animation.gif" alt="heiton animaatio" width="300" height="300">
+
+            <div class="dices">
+                <img id="first_dice" src="/dice/one.png" alt="ensimmainen noppa" width="100">
+                <img id="second_dice" src="dice/one.png" alt="toinen noppa" width="100">
+            </div>
+        </div>
+
+        <button id="stop-btn">Lopeta</button>
+        <button id="throw_btn">Heitä</button>
     </div>
 
     <script src="script.js"></script>
