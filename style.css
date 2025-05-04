@@ -99,7 +99,7 @@ button:hover {
     filter: brightness(85%);
 }
 
-#stop-btn {
+#stop_btn {
     background-color: #AA1803;
     border: none;
     cursor: pointer;
@@ -177,3 +177,9 @@ button:hover {
     padding-top: 20px;
 }
 
+#dice_animation {
+    position: absolute;
+    top:50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
