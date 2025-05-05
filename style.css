@@ -146,6 +146,23 @@ button:hover {
 }
 
 
+/* pelisääntö ikkuna */
+#instructions_window {
+    background-color:#F1BAA1;
+    width: 600px;
+    margin: auto;
+    border-radius: 15px;
+    padding: 20px;
+}
+#go_back {
+    background-color:#BD613C;
+    width: 200px;
+    font-size: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+
 /* voittaja ikkuna */
 #winner_window {
     background-color: #F1BAA1;

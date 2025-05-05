@@ -62,10 +62,10 @@
                 <button id="restart">
                     <img src="dice/restart.png" alt="aloita alusta" width="50" height="50" title="Aloita peli alusta">
                 </button>
-                <button id="music">
-                    <img src="dice/volume.png" alt="aani" width="50" height="50" title="aloittaa tai lopettaa muusiikin soiton">
+                <button id="musicBtn">
+                    <img id="musicBtnPic" src="dice/volumeoff.png" alt="aani" width="50" height="50" title="aloittaa tai lopettaa muusiikin soiton">
                 </button>
-                <button id="rules">
+                <button id="rulesBtn">
                     <img src="dice/instructions.png" alt="pelisaannot" width="50" height="50" title="Avaa pelisäännöt">
                 </button>
             </div>
@@ -82,6 +82,30 @@
         <button id="throw_btn">Heitä</button>
     </div>
 
+    <!-- pelisäännöt -->
+    <div id="instructions_window">
+        <h2>Pelisäännöt:</h2>
+        <h3>Pelinkulku:</h3>
+        <p>Pelaajia: 2-10</p>
+        <p>Pelaajat heittävät vuorotellen noppaa ja keräävät pisteitä.</p>
+        <p>Vuoron aikana voit heittää useita kertoja, mutta riskinä on menettää pisteet.</p>
+
+        <h3>1 nopalla:</h3>
+        <p>Heitä niin kauan kuin haluat.</p>
+        <p>Ykkönen nollaa vuoron pisteet, ja vuoro loppuu.</p>
+        <p>Voit lopettaa milloin tahansa ja säilyttää vuoropisteet.</p>
+
+        <h3>2 nopalla:</h3>
+        <p>Silmälukujen summa lisätään vuoropisteisiin.</p>
+        <p>Tuplat (esim. 3 + 3) antavat tuplapisteet.</p>
+        <p>Yksi ykkönen = vuoro loppuu, ei pisteitä.</p>
+        <p>Kaksi ykköstä = saat 25 pistettä, mutta vuoro päättyy.</p>
+        <p>Kolme tuplaa peräkkäin = vuoro päättyy, ei pisteitä.</p>
+
+        <button id="go_back">Palaa takaisin</button>
+    </div>
+
+    <!--voittaja ikkuna-->
     <div id="winner_window">
         <h2 id="winner">Nimi</h2>
         <p>voitti pelin!</p>
@@ -89,6 +113,10 @@
             <img src="dice/restart.png" alt="aloita alusta" width="50" height="50" title="Aloita peli alusta">
         </button>
     </div>
+
+    <audio id="music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio> 
 
     <script src="script.js"></script>
 </body>
