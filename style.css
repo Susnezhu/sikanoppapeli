@@ -169,6 +169,8 @@ button:hover {
     width: 400px;
     padding-bottom: 20px;
     border-radius: 15px;
+    margin: auto;
+    margin-top: 100px;
 }
 #winner_window p{
     font-size: 30px;

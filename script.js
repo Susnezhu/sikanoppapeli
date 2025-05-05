@@ -43,7 +43,7 @@ const currentName = document.getElementById("current_name");
 const currentScore = document.getElementById("current_score");
 const currentTotalScore = document.getElementById("current_total_score");
 const winner = document.getElementById("winner");
-const musicBtnPic = document.getElementById("musicBtnPic")
+const musicBtnPic = document.getElementById("musicBtnPic");
 
 //pelaaja input
 const winPoints = document.getElementById("win_points");
@@ -52,6 +52,8 @@ const playerName = document.getElementById("player_name");
 
 //musiikki ja äänet
 const music = document.getElementById("music");
+const diceThrowSound = document.getElementById("dice_throw_sound");
+const popSound = document.getElementById("pop_sound");
 
 gameWindow.style.display = "none";
 playerNameInput.style.display = "none";
@@ -96,6 +98,7 @@ function OpenStartMenu() {
 
     startButton.onclick = function() {
         if (oneDiceChoosed || twoDicesChoosed) {
+            popSound.play()
             writePlayerName();
         } else {
             alert("Valitse yhden tai kahden nopan pelin!")
@@ -112,6 +115,7 @@ function writePlayerName() {
     addPlayer.onclick = function() {
         const name = playerName.value.trim();
         if (name) {
+            popSound.play();
             players.push({
                 name: name,
                 score: 0,
@@ -173,10 +177,26 @@ function nullEverything() {
     //musiikki pois päältä
     if (isMusicOn) {
         music.pause();
-        musicBtnPic.src = "dice/volume.png"
+        music.currentTime = 0;
+        musicBtnPic.src = "dice/volumeoff.png";
+        isMusicOn = false;
     }
 }
 
+function checkForWinner() {
+
+    if (players[currentPlayerIndex].total >= Number(winPoints.value)) {
+        winner.textContent = players[currentPlayerIndex].name
+        winnerWindow.style.display = "block";
+        gameWindow.style.display = "none";
+
+        PlayAgain.onclick = function() {
+            nullEverything();
+            OpenStartMenu();
+        }
+        
+    }
+}
 
 //vaihtaa pelaaja ikkunassa olevat tiedot
 function changeScore() {
@@ -204,6 +224,7 @@ function oneDiceGameplay() {
 
     //restart nappula
     restartBtn.onclick = function() {
+        popSound.play()
         nullEverything();
         OpenStartMenu();
     }
@@ -214,20 +235,25 @@ function oneDiceGameplay() {
             music.pause();
             musicBtnPic.src = "dice/volumeoff.png"
             isMusicOn = false;
-        } else if (!isMusicOn) {
+            return;
+        } 
+        if (!isMusicOn) {
             music.currentTime = 0;
             music.play();
             musicBtnPic.src = "dice/volume.png"
             isMusicOn = true;
+            return;
         }
     }
 
     //pelisääntöjen avaus näppäin
     rulesBtn.onclick = function() {
+        popSound.play();
         gameWindow.style.display = "none";
         instructionsWindow.style.display = "block";
     }
     goBack.onclick = function() {
+        popSound.play();
         gameWindow.style.display = "block";
         instructionsWindow.style.display = "none";
     }
@@ -236,7 +262,12 @@ function oneDiceGameplay() {
     throwBtn.onclick = function() {
         const diceNum = diceRandom()
         diceAnimation.style.display = "block";
-        players[currentPlayerIndex].score += diceNum;
+        diceThrowSound.currentTime = 0
+        diceThrowSound.play();
+
+        if (diceNum != 1) {
+            players[currentPlayerIndex].score += diceNum;
+        }
 
         //ottaa kaikki napit pois käytöstä
         buttons.forEach(function(btn) {
@@ -244,34 +275,36 @@ function oneDiceGameplay() {
         });
 
         setTimeout(function(){
-            showDice(diceNum, firstDice)
+            showDice(diceNum, firstDice);
             diceAnimation.style.display = "none";
-            changeScore()
+            changeScore();
 
             //laittaa kaikki napit päälle
             buttons.forEach(function(btn) {
                 btn.disabled = false;
             });
+
+            if (diceNum == 1) {
+                players[currentPlayerIndex].score = 0;
+                const currentPlayer = players[currentPlayerIndex];
+                currentPlayerIndex++;
+
+                //jos kaikki pelaajat heitti nopan, vuoro alkaa uudestaan
+                if (currentPlayerIndex >= players.length) {
+                    currentPlayerIndex = 0;
+                    }
+                changeScore();
+            }
         },1000)
     }
     
     //lopetus nappula
     stopBtn.onclick = function() {
-        if (players[currentPlayerIndex].total >= Number(winPoints.value)) {
-            winner.textContent = players[currentPlayerIndex].name
-            winnerWindow.style.display = "block";
-            gameWindow.style.display = "none";
-
-            PlayAgain.onclick = function() {
-                nullEverything();
-                OpenStartMenu();
-            }
-            
-        }
 
         players[currentPlayerIndex].total += players[currentPlayerIndex].score;
         players[currentPlayerIndex].score = 0;
 
+        checkForWinner();
 
         const currentPlayer = players[currentPlayerIndex];
         currentPlayerIndex++;
