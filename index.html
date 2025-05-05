@@ -59,13 +59,13 @@
             </div>
 
             <div class="game_buttons">
-                <button>
+                <button id="restart">
                     <img src="dice/restart.png" alt="aloita alusta" width="50" height="50" title="Aloita peli alusta">
                 </button>
-                <button>
+                <button id="music">
                     <img src="dice/volume.png" alt="aani" width="50" height="50" title="aloittaa tai lopettaa muusiikin soiton">
                 </button>
-                <button>
+                <button id="rules">
                     <img src="dice/instructions.png" alt="pelisaannot" width="50" height="50" title="Avaa pelisäännöt">
                 </button>
             </div>
@@ -80,6 +80,14 @@
 
         <button id="stop_btn">Lopeta</button>
         <button id="throw_btn">Heitä</button>
+    </div>
+
+    <div id="winner_window">
+        <h2 id="winner">Nimi</h2>
+        <p>voitti pelin!</p>
+        <button id="play_again">
+            <img src="dice/restart.png" alt="aloita alusta" width="50" height="50" title="Aloita peli alusta">
+        </button>
     </div>
 
     <script src="script.js"></script>
