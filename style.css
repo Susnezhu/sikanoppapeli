@@ -124,6 +124,10 @@ button:hover {
     transform: translateX(-50%);
 }
 .dices {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
     position: absolute;
     bottom: 10px;
     left: 50%;
